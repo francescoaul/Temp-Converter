@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 300px;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Temperature Converter</h2>
+    <label for="fahrenheit">Enter Fahrenheit:</label>
+    <input type="number" id="fahrenheit" placeholder="Enter Fahrenheit" />
+
+    <button onclick="convertTemperature()">Convert</button>
+
+    <div class="result">
+        <p>Celsius: <span id="celsius">--</span></p>
+        <p>Kelvin: <span id="kelvin">--</span></p>
+    </div>
+
+    <script>
+        function convertTemperature() {
+            // Get the input value
+            let fahrenheit = document.getElementById('fahrenheit').value;
+
+            // Check if the value is a valid number
+            if (isNaN(fahrenheit) || fahrenheit === "") {
+                alert("Please enter a valid number");
+                return;
+            }
+
+            // Convert to Celsius and Kelvin
+            let celsius = ((fahrenheit - 32) * 5) / 9;
+            let kelvin = celsius + 273.15;
+
+            // Update the result in the HTML
+            document.getElementById('celsius').textContent = celsius.toFixed(2);
+            document.getElementById('kelvin').textContent = kelvin.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
